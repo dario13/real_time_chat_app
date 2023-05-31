@@ -1,20 +1,21 @@
 from quart import Quart
+from src.dependency_injection.container import Container
 from src.adapters.primary.ws_adapter import WebSocketAdapter
-from src.adapters.secondary.db_adapter import DBAdapter
-from src.services.chat_service import ChatService
+import sys
 
-db: DBAdapter = DBAdapter("postgresql://localhost:5432/chat")
-ws: WebSocketAdapter = WebSocketAdapter(ChatService(db))
+# Create and configure the container
+container = Container()
+container.config.db.url.from_env(
+    "DATABASE_URL", default="postgresql://localhost:5432/chat"
+)
+container.wire(modules=[sys.modules[__name__]])
+
 app = Quart(__name__)
-
-
-@app.route("/")
-async def hello():
-    return "Hello, World!"
 
 
 @app.websocket("/ws")
 async def rcv_msg():
+    ws: WebSocketAdapter = container.web_socket_adapter()
     await ws.receive_message()
 
 

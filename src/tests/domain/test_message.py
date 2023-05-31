@@ -1,6 +1,6 @@
 import unittest
-from app.domain.message import Message
-from app.domain.user import User
+from src.domain.entities.message import Message
+from src.domain.entities.user import User
 
 
 class TestMessage(unittest.TestCase):

@@ -1,7 +1,7 @@
 import unittest
-from app.domain.chatroom import Chatroom
-from app.domain.user import User
-from app.domain.message import Message
+from src.domain.entities.chatroom import Chatroom
+from src.domain.entities.user import User
+from src.domain.entities.message import Message
 
 
 class TestChatroom(unittest.TestCase):

@@ -9,9 +9,7 @@ from src.adapters.secondary.db_models import (
 )
 from sqlalchemy.orm.exc import NoResultFound
 from src.domain.ports.chatroom_port import ChatRoomPort
-from src.domain.entities.chatroom import Chatroom
-from src.domain.entities.message import Message
-from src.domain.entities.user import User
+from src.domain.entities import Chatroom, Message, User
 
 
 class DBAdapter(ChatRoomPort):

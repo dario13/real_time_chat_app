@@ -1,8 +1,6 @@
 from quart import websocket
 from src.services.chat_service import ChatService
-from src.domain.entities.chatroom import Chatroom
-from src.domain.entities.message import Message
-from src.domain.entities.user import User
+from src.domain.entities import Chatroom, Message, User
 import json
 
 
